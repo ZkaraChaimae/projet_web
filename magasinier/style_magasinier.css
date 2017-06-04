@@ -1,0 +1,6 @@
+
+
+form#alimenter_stock >#phase12,#qteBlock,#phase21,#phase22,#afficher_toutes_infos,#endPhase2,#validate
+{  
+    display :none;
+}
