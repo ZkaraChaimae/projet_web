@@ -8,7 +8,7 @@
     session_start();
     if($_SESSION['user_type'] == 'm')
         echo "Bienvenue employé numéro : ".$_SESSION['username'];
-    else header('/var/www/html/gestion_ventes/index.php');
+    else header('Location:/gestion_ventes/index.php');
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +35,7 @@
                                 <option value="">Selectionner</option>
                                 <?php while($donnees = $reponse->fetch())   
                                 { ?>
-                                <option value=" <?php echo $donnees['id_fournisseur'] ?> "> <?php echo $donnees['nom'] ?> </option>
+                                <option value=" <?php echo $donnees['id_fournisseur']; ?> "> <?php echo $donnees['nom']; ?> </option>
                         <?php    }?>
                             </select>
                         </td>
@@ -44,7 +44,7 @@
                 </table>
                 <p id="test" ></p>
             </div>
-            </br></br></br>
+            <br><br><br>
             <div id="phase12">
                 <table border='1'>
                     <th colspan=2>Saisir un fournisseur</th>
@@ -66,7 +66,7 @@
                     </tr>
                     <tr><td colspan=2><button onclick="return choisir_f()">Ou bien choisir un fournisseur existant</button></td></tr>
                 </table>
-                </br></br>
+                <br><br>
             </div>
             <button id="endPhase1" onclick="return fin_phase1()">Continuez</button>
         
@@ -80,7 +80,7 @@
                                 while($donnees2 = $reponse2->fetch())
                                 {
                             ?>
-                            <option value="<?php echo $donnees2['id_produit']; ?>"><?php echo $donnees2['code_produit'].' '.$donnees2['désignation']; ?></option>
+                            <option value="<?php echo $donnees2['id_produit']; ?>"><?php echo $donnees2['code_produit'].' '.$donnees2['designation']; ?></option>
                             <?php } ?>
                         </select></td></tr>
                     <tr>

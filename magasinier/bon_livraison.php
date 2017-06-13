@@ -6,7 +6,7 @@ $bdd = mysqli_connect('localhost','root','root','gestionVentes');
 session_start();
 if($_SESSION['user_type'] == 'm')
         echo "Bienvenue employé numéro : ".$_SESSION['username'];
-else header('/var/www/html/gestion_ventes/index.php');
+else header('Location:/gestion_ventes/index.php');
 
 ?>
 <!DOCTYPE html>

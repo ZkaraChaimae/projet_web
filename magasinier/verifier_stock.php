@@ -6,7 +6,7 @@ $bdd = mysqli_connect('localhost','root','root','gestionVentes');
 session_start();
 if($_SESSION['user_type'] == 'm')
         echo "Bienvenue employé numéro : ".$_SESSION['username'];
-else header('/var/www/html/gestion_ventes/index.php');
+else header('Location:/gestion_ventes/index.php');
 
 //Afficher tout les produits présents dans le stock
 $sql = "select * from produit ";
@@ -39,10 +39,13 @@ $result = mysqli_query($bdd, $sql);
                 <td id="colorMe"><?php echo $row['qte_stock'];?></td>
                 <td><?php echo $row['seuil'];?></td>
                 <script >
-                    var x ="<?php echo $row['qte_stock']; ?>";
+                    /*var x ="<?php echo $row['qte_stock']; ?>";
                     var y="<?php echo $row['seuil']; ?>";
+                    alert ("x "+x+" y "+y);
                     if(x<=y)
                         document.getElementById("colorMe").style.backgroundColor = "#FF9595";
+                    else 
+                        document.getElementById("colorMe").style.backgroundColor = "white";*/
                 </script>
             </tr>
             <?php } ?>

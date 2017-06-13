@@ -6,7 +6,7 @@ $bdd = mysqli_connect('localhost','root','root','gestionVentes');
 session_start();
 if($_SESSION['user_type'] == 'm')
         echo "Bienvenue employé numéro : ".$_SESSION['username'];
-else header('/var/www/html/gestion_ventes/index.php');
+else header('Location:/gestion_ventes/index.php');
 
 $idmagas = $_SESSION['username'];
 // Phase de fournisseur
@@ -14,7 +14,7 @@ $CHF = $_POST['choix_fournisseur'];
 if($CHF == 'choisir')
 {
     $idF = $_POST['f_existant'];
-    $sql = "select * from fournisseur where id_fournisseur = '$idF' ";
+    $sql = "select * from fournisseur where id_fournisseur = $idF ";
     $fournisseur = mysqli_query($bdd, $sql);
     $rowF = mysqli_fetch_assoc($fournisseur);
 }
@@ -46,6 +46,17 @@ if($CHP == 'choisir')
     $sql = "select * from produit where id_produit = $idP ";
     $produit = mysqli_query($bdd, $sql);
     $rowP = mysqli_fetch_assoc($produit);
+    $new = $rowP['qte_stock']+$qte;
+    // UPDATE
+    echo "update <br>";
+    $req_upd = "update produit set qte_stock = $new where id_produit = $idP";
+    echo $req_upd;
+    //$upd = mysqli_query($bdd, $req_upd);
+    if (mysqli_query($bdd, $req_upd)) {
+        echo "New record created successfully";
+    } else {
+        echo "<br>Error: " . "<br>" . mysqli_error($bdd);
+    }
 }
 else if( $CHP == 'saisir')
 {
