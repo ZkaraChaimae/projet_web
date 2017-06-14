@@ -30,11 +30,11 @@
             $_SESSION['user_type'] = $donnees['type'];
             
             if($donnees['type'] === 'c')
-                header('Location: /gestion_ventes/caissier/caissier.php');
+                header('Location: /gestion_ventes/projet_web/caissier/caissier.php');
             else if($donnees['type'] === 'm')
-                header('Location: /gestion_ventes/magasinier/magasinier.php');
+                header('Location: /gestion_ventes/projet_web/magasinier/magasinier.php');
             else if($donnees['type'] === 'v')
-                header('Location: /gestion_ventes/vendeur/vendeur.php');
+                header('Location: /gestion_ventes/projet_web/vendeur/vendeur.php');
         }
         else
             echo "<p id=\"erreur\">Login ou mot de passe incorrecte !<p><br>";

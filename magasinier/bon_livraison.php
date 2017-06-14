@@ -6,7 +6,7 @@ $bdd = mysqli_connect('localhost','root','root','gestionVentes');
 session_start();
 if($_SESSION['user_type'] == 'm')
         echo "Bienvenue employé numéro : ".$_SESSION['username'];
-else header('Location:/gestion_ventes/index.php');
+else header('Location:/projet_web/index.php');
 
 ?>
 <!DOCTYPE html>
@@ -18,10 +18,10 @@ else header('Location:/gestion_ventes/index.php');
     </head>
     <body>
         <ul>
-            <li><a href='verifier_stock.php'>Vérifier stock</a></li>
-            <li><a href='/gestion_ventes/magasinier/alimenter.php'>Alimenter stock</a></li>
-            <li><a href=#>Etablir bon de livraison</a></li>
-            <li><a href='/gestion_ventes/deconnexion.php'>Se déconnecter</a></li>
+            <li><a href='/projet_web/magasinier/verifier_stock.php'>Vérifier stock</a></li>
+            <li><a href='/projet_web/magasinier/alimenter.php'>Alimenter stock</a></li>
+            <li><a href='/projet_web/magasinier/bon_livraison.php'>Etablir bon de livraison</a></li>
+            <li><a href='/projet_web/deconnexion.php'>Se déconnecter</a></li>
         </ul>
         <br><br>
         <form method="POST" action="chercher_cmd.php">

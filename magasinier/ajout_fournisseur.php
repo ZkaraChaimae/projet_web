@@ -5,7 +5,7 @@ $bdd = mysqli_connect('localhost','root','root','gestionVentes');
 // Démarrer la session
 session_start();
 if($_SESSION['user_type'] != 'm')
-    header('Location:/gestion_ventes/index.php');
+    header('Location:/projet_web/index.php');
 
 $var1 = $_POST['nom'];
 $var2 = $_POST['email'];
@@ -24,4 +24,11 @@ if (mysqli_query($bdd, $sql))
 }
 else
     echo "<br>Error: " . "<br>" . mysqli_error($bdd);
+
+if($idF != $_SESSION['currentFournisseur'])
+{
+    $_SESSION['currentFournisseur'] = $idF;
+    unset($_SESSION['panier']);
+    unset($_SESSION['nv']);
+}
 ?>

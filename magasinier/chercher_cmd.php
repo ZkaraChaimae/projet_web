@@ -6,7 +6,7 @@ $bdd = mysqli_connect('localhost','root','root','gestionVentes');
 session_start();
 if($_SESSION['user_type'] == 'm')
         echo "Bienvenue employé numéro : ".$_SESSION['username'];
-else header('Location:/gestion_ventes/index.php');
+else header('Location:/projet_web/index.php');
 $bon = $_POST['bonCmd'];
 // Chercher la commande
   

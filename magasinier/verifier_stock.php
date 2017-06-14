@@ -6,7 +6,7 @@ $bdd = mysqli_connect('localhost','root','root','gestionVentes');
 session_start();
 if($_SESSION['user_type'] == 'm')
         echo "Bienvenue employé numéro : ".$_SESSION['username'];
-else header('Location:/gestion_ventes/index.php');
+else header('Location:/projet_web/index.php');
 
 //Afficher tout les produits présents dans le stock
 $sql = "select * from produit ";
@@ -22,10 +22,10 @@ $result = mysqli_query($bdd, $sql);
     </head>
     <body>
         <ul>
-            <li><a href='verifier_stock.php'>Vérifier stock</a></li>
-            <li><a href='/gestion_ventes/magasinier/alimenter.php'>Alimenter stock</a></li>
-            <li><a href='/gestion_ventes/magasinier/bon_livraison.php'>Etablir bon de livraison</a></li>
-            <li><a href='/gestion_ventes/deconnexion.php'>Se déconnecter</a></li>
+            <li><a href='/projet_web/magasinier/verifier_stock.php'>Vérifier stock</a></li>
+            <li><a href='/projet_web/magasinier/alimenter.php'>Alimenter stock</a></li>
+            <li><a href='/projet_web/magasinier/bon_livraison.php'>Etablir bon de livraison</a></li>
+            <li><a href='/projet_web/deconnexion.php'>Se déconnecter</a></li>
         </ul>
         <br><br>
         <table border=1 onchange="fun">

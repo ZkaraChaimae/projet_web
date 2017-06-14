@@ -5,7 +5,7 @@ $bdd = mysqli_connect('localhost','root','root','gestionVentes');
 // Démarrer la session
 session_start();
 if($_SESSION['user_type'] != 'm')
-    header('Location:/gestion_ventes/index.php');
+    header('Location:/projet_web/index.php');
 
 $idp = $_POST['idP'];
 $qte = $_POST['quantite'];
@@ -13,7 +13,12 @@ $prix = $_POST['prix'];
 $fournisseur = $_POST['fournisseur'];
 
 // Creer une variable session pour le fournisseur:
-$_SESSION['currentFournisseur'] = $fournisseur;
+// Si c'est pas le même fournisseur, supprimer l'ancien panier :
+if($fournisseur != $_SESSION['currentFournisseur'])
+{
+    $_SESSION['currentFournisseur'] = $fournisseur;
+    unset($_SESSION['panier']);
+}
 
 // Creer le panier
 if(!isset($_SESSION['panier']))

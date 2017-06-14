@@ -5,7 +5,7 @@ $bdd = mysqli_connect('localhost','root','root','gestionVentes');
 // Démarrer la session
 session_start();
 if($_SESSION['user_type'] != 'm')
-    header('Location:/gestion_ventes/index.php');
+    header('Location:/projet_web/index.php');
 /////////////////////////////////////////////////
 
 if((isset($_SESSION['panier']) || isset($_SESSION['nv']))&& isset($_SESSION['currentFournisseur']))
