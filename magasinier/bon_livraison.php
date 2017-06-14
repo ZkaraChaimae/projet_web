@@ -15,6 +15,7 @@ else header('Location:/projet_web/index.php');
         <title>Vérifier stock</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="jquery-3.2.1.min.js"></script>
     </head>
     <body>
         <ul>
@@ -24,16 +25,58 @@ else header('Location:/projet_web/index.php');
             <li><a href='/projet_web/deconnexion.php'>Se déconnecter</a></li>
         </ul>
         <br><br>
-        <form method="POST" action="chercher_cmd.php">
-            <table border=1>
-                <tr>
-                    <td>Taper ici le bon de commande</td>
-                    <td><input type="text" name="bonCmd" id="bonCmd"></td>
-                </tr>
-                <tr>
-                    <td colspan=2><button>Chercher</button></td>
-                </tr>
-            </table>
-        </form>
+        <div id="containSearch">
+            <input type="text" id="searchTxt" name="searchTxt" placeholder="N° commande">
+            <div id="result"></div>
+        </div>
+        <script>
+            $(document).ready(function(){
+               $('#searchTxt').keyup(function(){
+                   var txt = $(this).val();
+                   if(txt != '')
+                    {
+                        // Afficher le tableau du résultat :
+                        $('#result').css("display","block");
+                        $('#result').html('');
+                        $.ajax({
+                            url:"afficher_cmd.php",
+                            method:"post",
+                            data:{search:txt},
+                            dataType:"text",
+                            success:function(data)
+                            {
+                                $('#result').html(data);
+                            }
+                        });
+                    }
+                   else
+                    {
+                        // Ne pas afficher le tableau
+                        $('#result').css("display","none");
+                    }
+               });
+            });
+            
+            function livrer(cmd)
+            {
+                var addr = $("#A"+cmd).val();
+                var ville = $("#ville"+cmd).val();
+                if(addr == ''|| ville =='')
+                    alert("Veuillez donner une adresse valide !");
+                else
+                {
+                    $.ajax({
+                            url:"livrer.php",
+                            method:"post",
+                            data:{idCmd:cmd,adresse:addr,ville:ville},
+                            dataType:"text",
+                            success:function(data)
+                            {
+                                $('#result').html(data);
+                            }
+                        });
+                }
+            }
+        </script>
     </body>
 </html>
