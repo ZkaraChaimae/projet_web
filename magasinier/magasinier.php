@@ -10,9 +10,9 @@
 <html>
 <body>
     <ul>
-        <li><a href='verifier_stock.php'>Vérifier stock</a></li>
-        <li><a href='/gestion_ventes/magasinier/alimenter.php'>Alimenter stock</a></li>
-        <li><a href='/gestion_ventes/magasinier/bon_livraison.php'>Etablir bon de livraison</a></li>
+        <li><a href='/gestion_ventes/magasinier_/verifier_stock.php'>Vérifier stock</a></li>
+        <li><a href='/gestion_ventes/magasinier_/alimenter.php'>Alimenter stock</a></li>
+        <li><a href='/gestion_ventes/magasinier_/bon_livraison.php'>Etablir bon de livraison</a></li>
         <li><a href='/gestion_ventes/deconnexion.php'>Se déconnecter</a></li>
     </ul>
 </body>
